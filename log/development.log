@@ -148,3 +148,146 @@ Migrating to CreateStudents (1)
   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
   [1m[35mSQL (0.3ms)[0m  INSERT INTO "students" ("first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["first_name", "Morty"], ["last_name", "Smith"], ["created_at", "2017-11-28 15:01:02.845645"], ["updated_at", "2017-11-28 15:01:02.845645"]]
   [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "students" ("first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["first_name", "Rick"], ["last_name", "Sanchez"], ["created_at", "2018-05-18 17:18:08.392553"], ["updated_at", "2018-05-18 17:18:08.392553"]]
+  [1m[35m (1.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "students" ("first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["first_name", "Morty"], ["last_name", "Smith"], ["created_at", "2018-05-18 17:18:08.396231"], ["updated_at", "2018-05-18 17:18:08.396231"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/" for ::1 at 2018-05-18 13:24:41 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/jeffreyhwang/.rvm/gems/ruby-2.3.3/gems/railties-4.2.10/lib/rails/templates/rails/welcome/index.html.erb (1.4ms)
+Completed 200 OK in 18ms (Views: 9.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/students" for ::1 at 2018-05-18 13:24:48 -0400
+Processing by StudentsController#index as HTML
+  [1m[35mStudent Load (0.2ms)[0m  SELECT "students".* FROM "students"
+  Rendered students/index.html.erb within layouts/application (7.4ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+    1: <ul>
+    2:   <% @students.each do |student|  %>
+    3:   <li><%= student.first_name student.last_name %></li>
+    4:   <% end %>
+    5: </ul>
+  app/views/students/index.html.erb:3:in `block in _app_views_students_index_html_erb__2634755176029548852_70137152743240'
+  app/views/students/index.html.erb:2:in `_app_views_students_index_html_erb__2634755176029548852_70137152743240'
+
+
+  Rendered /Users/jeffreyhwang/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.7ms)
+  Rendered /Users/jeffreyhwang/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/jeffreyhwang/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/jeffreyhwang/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (81.9ms)
+
+
+Started GET "/students" for ::1 at 2018-05-18 13:24:59 -0400
+Processing by StudentsController#index as HTML
+  Rendered students/index.html.erb within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+SyntaxError (/Users/jeffreyhwang/Desktop/ModTwo/rails-restful-index-action-lab-nyc-web-042318/app/views/students/index.html.erb:3: syntax error, unexpected ')', expecting '='
+...first_name, student.last_name );@output_buffer.safe_append='...
+...                               ^
+/Users/jeffreyhwang/Desktop/ModTwo/rails-restful-index-action-lab-nyc-web-042318/app/views/students/index.html.erb:4: syntax error, unexpected keyword_end, expecting ')'
+'.freeze;   end 
+               ^
+/Users/jeffreyhwang/Desktop/ModTwo/rails-restful-index-action-lab-nyc-web-042318/app/views/students/index.html.erb:7: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/jeffreyhwang/Desktop/ModTwo/rails-restful-index-action-lab-nyc-web-042318/app/views/students/index.html.erb:9: syntax error, unexpected keyword_end, expecting ')'):
+  app/views/students/index.html.erb:3: syntax error, unexpected ')', expecting '='
+  app/views/students/index.html.erb:4: syntax error, unexpected keyword_end, expecting ')'
+  app/views/students/index.html.erb:7: syntax error, unexpected keyword_ensure, expecting ')'
+  app/views/students/index.html.erb:9: syntax error, unexpected keyword_end, expecting ')'
+
+
+  Rendered /Users/jeffreyhwang/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /Users/jeffreyhwang/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Users/jeffreyhwang/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/jeffreyhwang/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (77.6ms)
+
+
+Started GET "/students" for ::1 at 2018-05-18 13:25:16 -0400
+Processing by StudentsController#index as HTML
+  [1m[36mStudent Load (0.1ms)[0m  [1mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 349ms (Views: 348.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2018-05-18 13:25:17 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2018-05-18 13:25:17 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2018-05-18 13:25:17 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2018-05-18 13:25:17 -0400
+
+
+Started GET "/students" for ::1 at 2018-05-18 13:26:28 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsController#index as HTML
+  [1m[35mStudent Load (0.1ms)[0m  SELECT "students".* FROM "students"
+  Rendered students/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 221ms (Views: 206.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/students" for ::1 at 2018-05-18 13:26:29 -0400
+Processing by StudentsController#index as HTML
+  [1m[36mStudent Load (0.1ms)[0m  [1mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/students" for ::1 at 2018-05-18 13:26:31 -0400
+Processing by StudentsController#index as HTML
+  [1m[35mStudent Load (0.1ms)[0m  SELECT "students".* FROM "students"
+  Rendered students/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 13ms (Views: 12.7ms | ActiveRecord: 0.1ms)
+  [1m[36mStudent Load (2.4ms)[0m  [1mSELECT "students".* FROM "students"[0m
+
+
+Started GET "/students" for ::1 at 2018-05-18 13:29:34 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsController#index as HTML
+  [1m[35mStudent Load (0.1ms)[0m  SELECT "students".* FROM "students"
+  Rendered students/index.html.erb within layouts/application (8.6ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+    1: 
+    2:   <% @students.each do |student|  %>
+    3:   <p><%= student.first_name student.last_name %></p>
+    4:   <% end %>
+  app/views/students/index.html.erb:3:in `block in _app_views_students_index_html_erb___1891735714729753972_70142327424660'
+  app/views/students/index.html.erb:2:in `_app_views_students_index_html_erb___1891735714729753972_70142327424660'
+
+
+  Rendered /Users/jeffreyhwang/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.4ms)
+  Rendered /Users/jeffreyhwang/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/jeffreyhwang/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/jeffreyhwang/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (71.5ms)
+
+
+Started GET "/students" for ::1 at 2018-05-18 13:33:50 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsController#index as HTML
+  [1m[35mStudent Load (0.1ms)[0m  SELECT "students".* FROM "students"
+  Rendered students/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 231ms (Views: 221.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/students/1" for ::1 at 2018-05-18 13:33:59 -0400
+Processing by StudentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.2ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered students/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 19ms (Views: 13.2ms | ActiveRecord: 0.2ms)
